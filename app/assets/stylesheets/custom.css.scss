@@ -1,3 +1,6 @@
+
+$navbar-default-bg: green;
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -7,4 +10,18 @@
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+}
+
+#logo {
+  float: left;
+  font-size: 1.7em;
+  color: #000000;
+  //text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
+}
+
+#logo:hover {
+  color: red;
+  text-decoration: none;
 }
