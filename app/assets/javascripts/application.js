@@ -13,5 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap-sprockets
+//= require bootstrap
+//= require ie-emulation-modes-warning
+//= require ie10-viewport-bug-workaround
 //= require turbolinks
 //= require_tree .
