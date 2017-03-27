@@ -1,7 +1,4 @@
 
-$navbar-default-bg: green;
-
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
 .container-wide {
@@ -15,13 +12,33 @@ $navbar-default-bg: green;
 #logo {
   float: left;
   font-size: 1.7em;
-  color: #000000;
+  color: white;
   //text-transform: uppercase;
   letter-spacing: -1px;
   font-weight: bold;
 }
 
 #logo:hover {
-  color: red;
+  color: #f4fc05;
   text-decoration: none;
+}
+
+.navbar-custom {
+  background-color: #073815;
+  color:white;
+}
+
+.jumbotron {
+  background-image: asset-url('6.jpg');
+  background-size:cover;
+}
+
+.btn-mybtn1 {
+  background-color: #073815;
+  color: #fff;
+  border-color: #073815;
+}
+.btn-mybtn1:hover {
+  background-color: #f4fc05;
+  color:black;
 }
