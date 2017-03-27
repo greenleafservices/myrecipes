@@ -10,5 +10,5 @@ class CreateChefs < ActiveRecord::Migration[5.0]
   def down
     drop_table :chefs
   end
-  
+
 end
