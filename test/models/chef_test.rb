@@ -14,7 +14,7 @@ require 'test_helper'
      assert_not @chef.valid?
    end
 
-   test "name should be less than 30 characters" do
+   test "chefname should be less than 30 characters" do
      @chef.name = "a" * 31
      assert_not @chef.valid?
    end
