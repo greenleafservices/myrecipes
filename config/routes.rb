@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   #root "pages#home"
 	get 'pages/home'
 
-  root "recipes#index"
+  root "pages#home"
 	#get 'recipes/index', to: 'recipes#index'
 end
