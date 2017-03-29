@@ -13,6 +13,6 @@
  *= require_tree .
  *= require_self
  *= require bootstrap
- *= require ie10-viewport-bug-workaround.css
- *= require jumbotron.css
+ * require ie10-viewport-bug-workaround.css
+ * require jumbotron.css
  */
