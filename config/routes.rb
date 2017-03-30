@@ -1,18 +1,23 @@
 Rails.application.routes.draw do
-  #get 'chefs/index'
+  get 'chefs/index'
 
-  #get 'chefs/show'
+  get 'chefs/show'
 
-  #get 'chefs/new'
+  get 'chefs/new'
 
-  #get 'chefs/edit'
+  get 'chefs/edit'
 
-  #get 'chefs/delete'
-  resources :chefs do # default
-    member do
-      get :delete #should be added ,not part of default resources
-    end
-  end
+  get 'chefs/delete'
+
+  get '/signup', to: 'chefs#new'
+
+  resources :chefs, except: [:new] #we want the new route to go to /signup
+  #   member do
+  #     get :delete #should be added ,not part of default resources
+  #   end
+  # end
+
+
 
   resources :recipes do # default
     member do
@@ -20,9 +25,7 @@ Rails.application.routes.draw do
     end
   end
 
-  #root "pages#home"
-	get 'pages/home'
-
   root "pages#home"
-	#get 'recipes/index', to: 'recipes#index'
+	get 'pages/home', to: 'pages#home'
+
 end
