@@ -1,2 +1,18 @@
-<h1>Chefs#show</h1>
-<p>Find me in app/views/chefs/show.html.erb</p>
+<%= render 'shared/page_title', title: @chef.name %>
+
+<div class="well col-md-12 col-md-offset-2">
+  <p class="center">
+    <h2><%= @chef.name.capitalize %></h2>
+  </p>
+  <p><%= link_to gravatar_for(@chef, size: 50)%></p>
+  <p><%= @chef.email %></p>
+</div>
+
+<div class="col-md-2"></div>
+<div class="recipe-actions">
+  <%= link_to "Edit this Chef", edit_chef_path(@chef), class: 'btn btn-sm btn-warning' %>
+  <%= link_to "Delete this chef", chef_path(@chef), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-sm btn-danger" %>
+  <%= link_to "Return to Chef listing", chefs_path, class: "btn btn-sm btn-primary" %>
+
+</div>
+</br>
