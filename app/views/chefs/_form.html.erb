@@ -37,9 +37,10 @@
           <%= f.password_field :password_confirmation, rows: 10, class: "form-control", placeholder: "Re-enter the password" %>
         </div>
       </div>
+
       <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
-          <%= f.submit "Create my Account", class: "btn btn-mybtn1" %>
+          <%= f.submit(@chef.new_record? ? "Create my Account" : "Update my Account", class: "btn btn-mybtn1") %>
         </div>
       </div>
     <% end %>

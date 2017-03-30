@@ -1,5 +1,5 @@
-
 @import "bootstrap";
+
 
 .container-wide {
   width: 90%;
@@ -72,4 +72,15 @@
 }
 .text-align-1 {
   margin-left: 30px;
+}
+.mytable-1 {
+  width: 1000px;
+  margin-left: 20px;
+  padding: 8px;
+  line-height: 2.5;
+  vertical-align: top;
+  border-top: 1px solid #ddd
+}
+.center {
+  text-align: center;
 }

@@ -12,10 +12,11 @@ class ChefsController < ApplicationController
   end
 
   def create
+    debugger
     @chef = Chef.new(chef_params)
 
     if @chef.save
-      flash[:success] = "Chef Profile was created successfully!"
+      flash[:success] = "Welcome #{@chef.name} to the MyRecipes App!"
       redirect_to chef_path(@chef)
     else
       render 'new'
@@ -47,6 +48,6 @@ class ChefsController < ApplicationController
   private
 
     def chef_params
-      params.require(:chef).permit(:name, :email, :password)
+      params.require(:chef).permit(:name, :email, :password, :password_confirmation)
     end
   end

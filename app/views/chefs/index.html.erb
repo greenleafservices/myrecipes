@@ -11,7 +11,7 @@
   </div>
 <%# end %> -->
 
-<table class = "table">
+<table class = "table mytable-1">
   <tr>
     <th>Icon </th>
     <th>Name</th>
@@ -20,7 +20,7 @@
   <% @chefs.each do |chef| %>
     <tr>
       <td><%= gravatar_for(chef, size: 50) %></td>
-      <td><%= chef.name %></td>
+      <td><%= link_to chef.name, chef_path(chef) %></td>
       <td><%= chef.email %></td>
     </tr>
   <% end %>
