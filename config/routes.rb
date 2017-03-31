@@ -11,14 +11,15 @@ Rails.application.routes.draw do
 
   get '/signup', to: 'chefs#new'
 
+  get '/login', to:'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
   resources :chefs, except: [:new] #we want the new route to go to /signup
   #   member do
   #     get :delete #should be added ,not part of default resources
   #   end
   # end
-
-
-
   resources :recipes do # default
     member do
       get :delete #should be added ,not part of default resources

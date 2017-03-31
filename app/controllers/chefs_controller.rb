@@ -18,6 +18,8 @@ class ChefsController < ApplicationController
     @chef = Chef.new(chef_params)
 
     if @chef.save
+      # save the chef's parameters to the session variables
+      session[:chef_id] = @chef.id
       flash[:success] = "Welcome #{@chef.name} to the MyRecipes App!"
       redirect_to chef_path(@chef)
     else

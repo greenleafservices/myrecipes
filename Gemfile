@@ -37,7 +37,7 @@ gem 'bcrypt', '~> 3.1.7'
 #gem 'bcrypt',  platforms: :ruby
 gem 'will_paginate', '3.1.0'
 gem 'bootstrap-will_paginate', '0.0.10'
-
+# gem 'debugger', '~> 1.6', '>= 1.6.8'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
