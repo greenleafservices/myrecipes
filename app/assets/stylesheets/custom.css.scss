@@ -75,12 +75,25 @@
 }
 .mytable-1 {
   width: 1000px;
+  color: #073B15;
   margin-left: 20px;
   padding: 8px;
   line-height: 2.5;
   vertical-align: top;
   border-top: 1px solid #ddd
+  // a {
+  //   color: #073B15;
+  //   a:hover {
+  //     text-decoration: none;
+  //   }
+  // }
+
 }
+
 .center {
   text-align: center;
+  margin-top: 0px;
+}
+.my-dropdown-menu {
+  background-color: #8ddda4;
 }
