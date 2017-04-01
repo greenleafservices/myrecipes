@@ -1,4 +1,9 @@
 class ChefsController < ApplicationController
+# ************************************ Eliminate direct URL access to pages ********************************
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+  # only the logged in chef is allowed access
+  # **********************************************************************************************************
+
   def index
     #@chefs = Chef.sorted
     @chefs = Chef.sorted.paginate(page: params[:page], per_page: 5)
@@ -14,9 +19,7 @@ class ChefsController < ApplicationController
   end
 
   def create
-    debugger
     @chef = Chef.new(chef_params)
-
     if @chef.save
       # save the chef's parameters to the session variables
       session[:chef_id] = @chef.id
@@ -37,22 +40,30 @@ class ChefsController < ApplicationController
     end
   end
 
-  def edit
-  @chef = Chef.find(params[:id])
-  end
+    def edit
+      @chef = Chef.find(params[:id])
+    end
 
-  def delete
-  end
+    def delete
+    end
 
-  def destroy
-    @chef = Chef.find(params[:id])
-    @chef.destroy
-    flash[:danger] = "Chef and all associated recipes have been deleted"
-    redirect_to chefs_path
+    def destroy
+      @chef = Chef.find(params[:id])
+      @chef.destroy
+      flash[:danger] = "Chef and all associated recipes have been deleted"
+      redirect_to chefs_path
     end
   private
 
     def chef_params
       params.require(:chef).permit(:name, :email, :password, :password_confirmation, :comments)
     end
-  end
+
+    def require_same_user
+      if current_chef != @chef
+        flash[:danger] = "You can only edit or delete your own account"
+        redirect_to chefs_path
+      end
+    end
+
+end
