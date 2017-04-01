@@ -16,8 +16,10 @@
 
 <div class="col-md-2"></div>
 <div class="recipe-actions">
-  <%= link_to "Edit this Chef", edit_chef_path(@chef), class: 'btn btn-sm btn-warning' %>
-  <%= link_to "Delete this chef", chef_path(@chef), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-sm btn-danger" %>
+  <% if logged_in? && current_chef.id == @chef.id %>
+    <%= link_to "Edit this Chef", edit_chef_path(@chef), class: 'btn btn-sm btn-warning' %>
+    <%= link_to "Delete chef", chef_path(@chef), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-sm btn-danger" %>
+  <% end %>
   <%= link_to "Return to Chef listing", chefs_path, class: "btn btn-sm btn-primary" %>
 
 </div>
