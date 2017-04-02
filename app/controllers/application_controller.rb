@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   def current_chef
     # if there is a current chef logged in use it (or - ||) if the id is in the session variable, find the chef and make it the current chef
-    @current_chef ||= Chef.find(session[:chef_id]) if session[:chef_id]
+      @current_chef ||= Chef.find(session[:chef_id]) if session[:chef_id]
   end
 
   # check to see if anyone is logged in
