@@ -1,7 +1,7 @@
 class ChefsController < ApplicationController
 # ************************************ Eliminate direct URL access to pages ********************************
   before_action :require_same_user, only: [:edit, :update, :destroy]
-  before_action :require_admin, only: [:destroy]
+  #before_action :require_admin, only: [:destroy]
   # only the logged in chef is allowed access
   # **********************************************************************************************************
 
@@ -23,9 +23,10 @@ class ChefsController < ApplicationController
     @chef = Chef.new(chef_params)
     if @chef.save
       # save the chef's parameters to the session variables
-      session[:chef_id] = @chef.id
-      flash[:success] = "Welcome #{@chef.name} to the MyRecipes App!"
-      redirect_to chef_path(@chef)
+      #session[:chef_id] = @chef.id
+      #flash[:success] = "Welcome #{@chef.name} to the MyRecipes App!"
+      flash[:success] = "Chef #{@chef.name} to the MyRecipes App!"
+      redirect_to chefs_path
     else
       render 'new'
     end
