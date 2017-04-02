@@ -1,6 +1,7 @@
 class ChefsController < ApplicationController
 # ************************************ Eliminate direct URL access to pages ********************************
   before_action :require_same_user, only: [:edit, :update, :destroy]
+  before_action :require_admin, only: [ :destroy]
   # only the logged in chef is allowed access
   # **********************************************************************************************************
 
@@ -49,9 +50,11 @@ class ChefsController < ApplicationController
 
     def destroy
       @chef = Chef.find(params[:id])
-      @chef.destroy
-      flash[:danger] = "Chef and all associated recipes have been deleted"
-      redirect_to chefs_path
+      if !@chef.admin?
+        @chef.destroy
+        flash[:danger] = "Chef and all associated recipes have been deleted"
+        redirect_to users_path
+      end
     end
   private
 
@@ -60,9 +63,19 @@ class ChefsController < ApplicationController
     end
 
     def require_same_user
-      if current_chef != @chef
+
+        @chef = Chef.find(params[:id])
+
+       if current_chef != @chef
         flash[:danger] = "You can only edit or delete your own account"
         redirect_to chefs_path
+      end
+    end
+
+    def require_admin
+      if logged_in? & !current_chef.admin?
+        flash[:danger] = "Only admin users can perform that action"
+        redirect_to root_path
       end
     end
 
