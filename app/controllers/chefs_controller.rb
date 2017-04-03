@@ -20,13 +20,22 @@ class ChefsController < ApplicationController
   end
 
   def create
+    @adminFlag = 0
+    if logged_in? #skip the next line for a new user creating his/her profile
+      if current_chef.admin?
+        @adminFlag = 1 # if this action is called by the admin, store the admin flag
+      end
+    end
     @chef = Chef.new(chef_params)
     if @chef.save
-      # save the chef's parameters to the session variables
-      #session[:chef_id] = @chef.id
-      #flash[:success] = "Welcome #{@chef.name} to the MyRecipes App!"
-      flash[:success] = "Chef #{@chef.name} to the MyRecipes App!"
-      redirect_to chefs_path
+      if @adminFlag != 1 # if this is a new user creating his/her own profile, set the session id to the new user's id
+        flash[:success] = "Welcome #{@chef.name} to the MyRecipes App!"
+        session[:chef_id] = @chef.id
+        redirect_to chef_path(@chef.id) # go to the new chef's profile page
+      else
+        flash[:success] = "Chef #{@chef.name} added to the MyRecipes App!"
+        redirect_to chefs_path #Admin created this chef profile, show all the chefs_path
+      end
     else
       render 'new'
     end

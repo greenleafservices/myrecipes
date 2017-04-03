@@ -1,8 +1,10 @@
 <%= render 'shared/page_title', title: "showing all recipes" %>
-
 <div align="center">
   <%= will_paginate %>
 </div>
+<!-- <div align="center">
+  <%= link_to "Back to Home Page", root_path, class: 'btn btn-sm btn-mybtn1' %>
+</div> -->
 
 <%= render 'recipe', obj:@recipes %>
 
