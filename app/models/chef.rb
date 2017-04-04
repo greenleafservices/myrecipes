@@ -1,6 +1,7 @@
 class Chef < ApplicationRecord
 
   has_many :recipes, dependent: :destroy #this will cause all the dependent recipes to be destroyed as well
+  has_many :comments, dependent: :destroy
 
   before_save { self.email = email.downcase }
 
