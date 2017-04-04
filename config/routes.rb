@@ -26,6 +26,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :ingredients do
+    member do
+      get :delete
+    end
+  end
+  
   root "pages#home"
 	get 'pages/home', to: 'pages#home'
 

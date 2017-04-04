@@ -5,17 +5,20 @@
   <%#= gravatar_for(@chef, size: 50)%>
   </div>
 </div> -->
-
-<h3 align="center"><%= @chef.name %>'s recipes</h3>
-<% if logged_in? && current_chef.id == @chef.id %>
-  <p class = "center"><%= link_to "Create a new recipe", new_recipe_path %></p>
+<% if @chef.recipes.count !=0 %>
+  <h3 align="center"><%= @chef.name %>'s recipes</h3>
+  <% if logged_in? && current_chef.id == @chef.id %>
+    <p class = "center"><%= link_to "Create a new recipe", new_recipe_path %></p>
+  <% end %>
+  <!-- the @chef_recipes instance variable is defined in the ChefsController  -->
+  <div class="center">
+      <%= will_paginate @chef_recipes %>
+  </div>
+  <!--Now that we are using the data instance and not the entire table, we use it as the reference for the rendered object passwordsed to the partial  -->
+  <%= render 'recipes/recipe', obj:@chef_recipes %>
+<% else %>
+  <h3 align="center">No Recipes Yet</h3>
 <% end %>
-<!-- the @chef_recipes instance variable is defined in the ChefsController  -->
-<div class="center">
-    <%= will_paginate @chef_recipes %>
-</div>
-<!--Now that we are using the data instance and not the entire table, we use it as the reference for the rendered object passwordsed to teh partial  -->
-<%= render 'recipes/recipe', obj:@chef_recipes %>
 
 <div class="col-md-2"></div>
 <div class="recipe-actions">
