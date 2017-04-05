@@ -7,20 +7,25 @@
     </div> -->
     <!-- <div class="col-md-8 well"> -->
       <div class="well col-md-10 mycol-md-offset-1">
-      <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
-      <p><%= truncate(recipe.description, length: 150) %></p>
-      <% if recipe.ingredients.any? %>
-        <p>Ingredients: <%= render recipe.ingredients %> </p>
-      <% end %>
-      <p>
-        <span class="quiet"><small>Last Updated <%= time_ago_in_words(recipe.updated_at) %> ago by <%= recipe.chef.name.capitalize %></small></span>
-      </p>
-      <% if logged_in? && current_chef == recipe.chef %>
-        <div class="recipe-actions">
-          <%= link_to "Edit this recipe", edit_recipe_path(recipe), class: 'btn btn-sm btn-warning' %>
-          <%= link_to "Delete this recipe", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-sm btn-danger" %>
-        </div>
-      <% end %>
+        <h4><%= link_to recipe.name, recipe_path(recipe) %></h4>
+        <p><%= truncate(recipe.description, length: 150) %></p>
+        <% if recipe.ingredients.any? %>
+          <p>Ingredients: <%= render recipe.ingredients %> </p>
+        <% end %>
+        <!-- <p>
+          <span class="quiet"><small>Last Updated <%= time_ago_in_words(recipe.updated_at) %> ago by <%= recipe.chef.name.capitalize %></small></span>
+        </p> -->
+        <p><% if recipe.comments.any? %>
+            <span class="quiet"><small><%= pluralize(recipe.comments.count, "Comment") %></small></span>
+          <% end %>
+        </p>
+
+        <% if logged_in? && current_chef == recipe.chef %>
+          <div class="recipe-actions">
+            <%= link_to "Edit this recipe", edit_recipe_path(recipe), class: 'btn btn-sm btn-warning' %>
+            <%= link_to "Delete this recipe", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-sm btn-danger" %>
+          </div>
+        <% end %>
     </div>
   </div>
 <% end %>

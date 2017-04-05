@@ -41,6 +41,31 @@
 
 </div>
 </br>
+<!-- Add the ability to add comment on this recipe -->
+<% if logged_in? %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <!-- This form uses a [nested route] which is defined in the routes file and
+          the instance variable @comment is defined in the show action of the recipes controller -->
+      <%= form_for([@recipe, @comment], :html => {class: "form-horizontal", role: "form"}) do |f| %>
+        <div class="form-group">
+          <div class="control-label col-md-2">
+            <%= f.label :description, "Comment" %>
+          </div>
+          <div class="col-md-8">
+            <%= f.text_area :description, rows: 2, class: "form-control", placeholder: "Enter Comment Here" %>
+          </div>
+          <!-- <div class="form-group">
+            <div class="col-md-offset-2 col-md-10"> -->
+              <!-- This will call the create action in the Comments controller -->
+              <%= f.submit "Submit Comment", class: "btn btn-primary btn-sm btn-mybtn1" %>
+            <!-- </div> -->
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
 <% if @recipe.comments.any? %>
     <div class="row">
       <div class="col-md-8 col-md-offset-2">

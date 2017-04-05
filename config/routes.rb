@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     member do
       get :delete #should be added ,not part of default resources
     end
+    resources :comments, only: [:create] #a nested route for recipe comments
   end
 
   resources :ingredients do
@@ -31,7 +32,7 @@ Rails.application.routes.draw do
       get :delete
     end
   end
-  
+
   root "pages#home"
 	get 'pages/home', to: 'pages#home'
 
