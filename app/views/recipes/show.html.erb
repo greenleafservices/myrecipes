@@ -2,10 +2,14 @@
 
 <div class="well col-md-12 col-md-offset-2">
   <h4 class="center description"><strong>Steps: </strong></h4>
-  <hr />
   <%= simple_format(@recipe.description) %>
   <hr />
-  <div class="pull-right">
+  <!-- If there are any ingredients used by this recipe that are tagged in the recipe and thus are entered into the recioe_ingredients table, show them on the form -->
+  <% if @recipe.ingredients.any? %>
+  <!-- This will automatically go out to the _ingredients partial in ingredients view and render it because of the associations between recipes and ingredients in the models -->
+    <p>Ingredients: <%= render @recipe.ingredients %></p>
+  <% end %>
+  <!-- <div class="pull-right">
     <p class="center">
       <em>Created by:</em>
     </p>
@@ -16,16 +20,21 @@
       <small><%= @recipe.chef.name.capitalize %></small>
       <div class="pull-right"><%= time_ago_in_words(@recipe.created_at) %> ago</div>
     </p>
-  </div>
+  </div> -->
 </div>
 
 <div class="col-md-2"></div>
 <div class="recipe-actions">
-  <% if logged_in? && current_chef == @recipe.chef %>
-    <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: 'btn btn-sm btn-warning' %>
-    <%= link_to "Delete this recipe", recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-sm btn-danger" %>
-    <%= link_to "View my recipes only", chef_path(current_chef), class: "btn btn-sm btn-primary" %>
-    <%= link_to "View all recipes", recipes_path, class: "btn btn-sm btn-primary" %>
+  <% if logged_in? %>
+    <% if current_chef == @recipe.chef %>
+      <%= link_to "Edit this recipe", edit_recipe_path(@recipe), class: 'btn btn-sm btn-warning' %>
+      <%= link_to "Delete this recipe", recipe_path(@recipe), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-sm btn-danger" %>
+      <%= link_to "View my recipes only", chef_path(current_chef), class: "btn btn-sm btn-primary" %>
+      <%= link_to "View all recipes", recipes_path, class: "btn btn-sm btn-primary" %>
+    <% else %>
+        <div class="pull-right"><%= link_to gravatar_for(@recipe.chef, size: 50), chef_path(@recipe.chef) %>See all this chef's recipes</div>
+        <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-sm btn-primary" %>
+    <% end %>
   <% else %>
     <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-sm btn-primary" %>
   <% end %>

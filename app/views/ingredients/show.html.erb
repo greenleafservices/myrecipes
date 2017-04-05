@@ -1,6 +1,6 @@
 <%= render 'shared/page_title', title: "#{@ingredient.name}" %>
 <% if @ingredient.recipes.count !=0 %>
-  <h3 align="center">Recipes containg <%= @ingredient.name %></h3>
+  <h3 align="center">Recipes containing <%= @ingredient.name %></h3>
   <div align="center">
     <%= will_paginate @ingredient_recipes %>
     <%= link_to "Return to ingredients listing", ingredients_path, class: 'btn btn-sm btn-mybtn1' %>

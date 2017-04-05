@@ -115,3 +115,19 @@
   text-align: center;
   padding-top: 15px;
 }
+.input_checkbox input {
+  width: auto !important;
+}
+.message-row {
+  line-height: 1;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+.message-row:before,
+.message-row:after {
+  display: table;
+  content: " ";
+}
+.message-row:after {
+  clear: both;
+}
