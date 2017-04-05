@@ -1,0 +1,25 @@
+<div align="center">
+<!-- The comments variable is from the @comments passed to the partial by the recipe show page -->
+  <%= will_paginate comments %>
+</div>
+
+  <!-- <%#= render(partial: 'comments/comment', object: comment) %> -->
+  <table class = "table mytable-1">
+    <tr>
+      <th>Icon </th>
+      <th>Commentor</th>
+      <th>Comment</th>
+      <th>Comment Time</th>
+    </tr>
+    <% comments.each do |comment| %>
+      <tr>
+        <td><%= gravatar_for(comment.chef, size: 20) %></td>
+        <td><%= comment.chef.name.capitalize %></td>
+        <td><%= comment.description %></td>
+        <td><%= time_ago_in_words(comment.created_at) %> ago</td>
+      </tr>
+    <% end %>
+  </table>
+<div align="center">
+  <%= will_paginate comments %>
+</div>

@@ -1,6 +1,6 @@
 <%= render 'shared/page_title', title: @recipe.name %>
 
-<div class="well col-md-12 col-md-offset-2">
+<div class="well col-md-12 mycol-md-offset-1">
   <h4 class="center description"><strong>Steps: </strong></h4>
   <%= simple_format(@recipe.description) %>
   <hr />
@@ -32,7 +32,7 @@
       <%= link_to "View my recipes only", chef_path(current_chef), class: "btn btn-sm btn-primary" %>
       <%= link_to "View all recipes", recipes_path, class: "btn btn-sm btn-primary" %>
     <% else %>
-        <div class="pull-right"><%= link_to gravatar_for(@recipe.chef, size: 50), chef_path(@recipe.chef) %>See all this chef's recipes</div>
+        <div class="pull-right"><%= link_to gravatar_for(@recipe.chef, size: 30), chef_path(@recipe.chef) %>See all this chef's recipes</div>
         <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-sm btn-primary" %>
     <% end %>
   <% else %>
@@ -41,3 +41,19 @@
 
 </div>
 </br>
+<% if @recipe.comments.any? %>
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+          <h4><small>Comments:</small></h4>
+          <div id = "messages">
+            <%= render partial: 'comments/comments', object: @comments %> <!-- this @comments variable is created in the recipes controller -->
+          </div>
+      </div>
+    </div>
+<% else %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h4><small>There are no comments on this recipe.</small></h4>
+    </div>
+  </div>
+<% end %>

@@ -11,6 +11,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id]) #get the recipe data
+    @comments = @recipe.comments.paginate(page: params[:page], per_page: 5)
   end
 
   def new

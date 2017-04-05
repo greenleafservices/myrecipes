@@ -13,7 +13,7 @@
   </tr>
   <% @chefs.each do |chef| %>
     <tr>
-      <td><%= link_to gravatar_for(chef, size: 50), chef_path(chef) %></td>
+      <td><%= link_to gravatar_for(chef, size: 20), chef_path(chef) %></td>
       <td><%= link_to chef.name.capitalize, chef_path(chef) %></td>
       <td><%= pluralize(chef.recipes.count, "recipe") if chef.recipes %></td>
       <td><%= chef.email %></td>

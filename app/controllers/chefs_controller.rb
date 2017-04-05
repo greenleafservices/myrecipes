@@ -7,7 +7,7 @@ class ChefsController < ApplicationController
 
   def index
     #@chefs = Chef.sorted
-    @chefs = Chef.sorted.paginate(page: params[:page], per_page: 5)
+    @chefs = Chef.sorted.paginate(page: params[:page], per_page: 10)
   end
 
   def show
