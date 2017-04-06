@@ -26,25 +26,27 @@
       <div class="control-label col-md-2">
         <%= f.label :description, "Ingredients"%>
       </div>
-      <div class="col-md-8">
-        <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Enter recipe ingredients" %>
+      <div class="col-md-10">
+        <%= f.text_area :description, rows: 6, class: "form-control", placeholder: "Enter recipe ingredients" %>
       </div>
     </div>
     <div class="form-group">
       <div class="control-label col-md-2">
         <%= f.label :directions %>
       </div>
-      <div class="col-md-8">
-        <%= f.text_area :directions, rows: 10, class: "form-control", placeholder: "Enter steps to create recipe" %>
+      <div class="col-md-10">
+        <%= f.text_area :directions, rows: 6, class: "form-control", placeholder: "Enter steps to create recipe" %>
       </div>
     </div>
     <div class="form-group">
-      <div class="row">
-        <div class="col-md-offset-2 col-md-8">
-          <%= f.collection_check_boxes :ingredient_ids, Ingredient.sorted, :id, :name do |cb|%>
-            <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox")+ cb.text} %>
-          <% end %>
-        </div>
+      <div class="control-label col-md-2">
+          <%= f.label :ingredient_ids, "Specify Ingredients"%>
+      </div>
+      <!-- <div class="col-md-offset-2 col-md-9"> -->
+      <div class="col-md-10">
+        <%= f.collection_check_boxes :ingredient_ids, Ingredient.sorted, :id, :name do |cb|%>
+          <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox")+ cb.text} %>
+        <% end %>
       </div>
     </div>
     <div class="form-group">

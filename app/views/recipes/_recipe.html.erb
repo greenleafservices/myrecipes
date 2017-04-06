@@ -1,9 +1,10 @@
-<table class = "table mytable-1">
+<table class = "table mytable-1100">
 
   <tr>
     <th>Recipe</th>
     <th>Description</th>
     <th>Ingredients</th>
+    <th>Comments?</th>
     <th>Action</td>
   </tr>
 
@@ -14,10 +15,19 @@
       <td><%= recipe.synopsis %></td>
       <% if recipe.ingredients.any? %>
         <td><%= render recipe.ingredients %></td>
+      <% else %>
+        <td>No ingredients specified</td>
+      <% end %>
+      <% if recipe.comments.any? %>
+        <td> <%= recipe.comments.count %></td>
+      <% else %>
+        <td>No comments yet</td>
       <% end %>
       <% if logged_in? && current_chef == recipe.chef %>
-        <td><%= link_to "Edit this recipe", edit_recipe_path(recipe), class: 'btn btn-sm btn-warning' %>
-          <%= link_to "Delete this recipe", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure you want to delete?" }, class: "btn btn-sm btn-danger" %></td>
+        <h3><td>
+          <%= link_to "Edit  ", edit_recipe_path(recipe), class: "myLink" %>
+          &nbsp;
+          <%= link_to "Delete ", recipe_path(recipe), method: :delete, data: { confirm: "Are you sure you want to delete this recipe?"}, class: "myLink" %></td></h3>
       <% end %>
     </tr>
   <% end %>

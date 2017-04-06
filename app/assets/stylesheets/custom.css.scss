@@ -40,7 +40,7 @@
 }
 .btn-mybtn1:hover {
   background-color: #f4fc05;
-  color:black;
+  color: black;
 }
 .btn-mybtn1:focus {
   background-color: #073815;
@@ -117,13 +117,13 @@
   width: 100%;
   padding-top: 5px;
   a {
-    color: #000;
+    color: #fff;
   }
 }
 .text-align-1 {
   margin-left: 30px;
 }
-.mytable-1 {
+.mytable-1000 {
   width: 1000px;
   color: #073B15;
   margin-left: 20px;
@@ -132,11 +132,24 @@
   vertical-align: top;
   border-top: 1px solid #ddd
 }
-.mytable-1 a {
+.mytable-1000 a {
   color: #073B15;
   text-decoration: none;
 }
-.mytable-2 {
+.mytable-1100 {
+  width: 1100px;
+  color: #073B15;
+  margin-left: 20px;
+  padding: 8px;
+  line-height: 2.5;
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+  a {
+    color: #073B15;
+    text-decoration: none;
+  }
+}
+.mytable-450 {
   width: 450px;
   color: #073B15;
   margin-left: 400px;
@@ -145,7 +158,7 @@
   vertical-align: top;
   border-top: 1px solid #ddd
 }
-.mytable-2 a {
+.mytable-450 a {
   color: #073B15;
   text-decoration: none;
 }
@@ -179,4 +192,11 @@
 .mycol-md-offset-1 {
   margin-left: 4.16666665%;
   margin-left: 4.16666665%;
+}
+.myLink {
+  text-decoration-style: solid;
+  text-decoration: underline;
+  a {
+    color: #fff;
+  }
 }
