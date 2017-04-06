@@ -3,7 +3,7 @@ class IngredientsController < ApplicationController
   before_action :require_admin, except: [:show, :index]
 
   def index
-    @ingredients = Ingredient.sorted.paginate(page: params[:page], per_page: 5)
+    @ingredients = Ingredient.sorted.paginate(page: params[:page], per_page: 10)
   end
 
   def show

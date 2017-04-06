@@ -22,7 +22,14 @@
     </tr>
   <% end %>
 </table>
-
+<% if logged_in? && current_chef.admin? %>
+  <div align="center">
+      <%= link_to "Add a new Ingredient",  new_ingredient_path, class: "btn btn-mybtn1" %>
+  </div>
+<% end %>
+<div align="center">
+  &nbsp;
+</div>
 <div align="center">
   <%= will_paginate %>
 </div>

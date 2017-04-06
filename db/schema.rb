@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404134351) do
+ActiveRecord::Schema.define(version: 20170406133736) do
 
   create_table "chefs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(version: 20170404134351) do
     t.integer  "chef_id"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.text     "directions",  limit: 65535
+    t.string   "synopsis"
     t.index ["chef_id"], name: "index_recipes_on_chef_id", using: :btree
   end
 

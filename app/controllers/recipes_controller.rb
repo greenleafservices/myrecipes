@@ -6,7 +6,7 @@ class RecipesController < ApplicationController
     # **********************************************************************************************************
   def index
     #@recipes = Recipe.all
-    @recipes = Recipe.latest.paginate(page: params[:page], per_page: 3)
+    @recipes = Recipe.latest.paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -55,7 +55,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :description, ingredient_ids:[])
+    params.require(:recipe).permit(:name, :description, :directions, :synopsis, ingredient_ids:[])
   end
 
   def require_same_user
