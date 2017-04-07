@@ -113,54 +113,42 @@
   color: #073B15;
 }
 
-.recipe-actions {
+.recipe-actions { // This places the block of action buttons
   width: 100%;
+  margin-left: 50px;
   padding-top: 5px;
-  a {
-    color: #fff;
-  }
+  padding-bottom: 10px;
 }
+
 .text-align-1 {
   margin-left: 30px;
 }
-.mytable-1000 {
-  width: 1000px;
+.mytable-90 {
+  width: 90%;
   color: #073B15;
-  margin-left: 20px;
+  margin-left: 40px;
   padding: 8px;
-  line-height: 2.5;
+  line-height: 2.0;
   vertical-align: top;
-  border-top: 1px solid #ddd
+  border-top: 1px solid #ddd;
+  a {
+    text-decoration: underline;
+    color: #073B15;
+  }
 }
-.mytable-1000 a {
+
+.mytable-50 {
+  width: 50%;
   color: #073B15;
-  text-decoration: none;
-}
-.mytable-1100 {
-  width: 1100px;
-  color: #073B15;
-  margin-left: 20px;
+  margin-left: 400px;
   padding: 8px;
   line-height: 2.5;
   vertical-align: top;
   border-top: 1px solid #ddd;
   a {
     color: #073B15;
-    text-decoration: none;
+    text-decoration: underline;
   }
-}
-.mytable-450 {
-  width: 450px;
-  color: #073B15;
-  margin-left: 400px;
-  padding: 8px;
-  line-height: 2.5;
-  vertical-align: top;
-  border-top: 1px solid #ddd
-}
-.mytable-450 a {
-  color: #073B15;
-  text-decoration: none;
 }
 .center {
   text-align: center;
@@ -195,8 +183,8 @@
 }
 .myLink {
   text-decoration-style: solid;
-  text-decoration: underline;
+  text-decoration: none !important
   a {
-    color: #fff;
+    color: #073B15;
   }
 }
