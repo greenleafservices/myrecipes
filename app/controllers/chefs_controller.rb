@@ -31,8 +31,9 @@ class ChefsController < ApplicationController
       if @adminFlag != 1 # if this is a new user creating his/her own profile, set the session id to the new user's id
         flash[:success] = "Welcome #{@chef.name} to the MyRecipes App!"
         session[:chef_id] = @chef.id
+        cookies.signed[:chef_id] = @chef.id
         redirect_to chef_path(@chef.id) # go to the new chef's profile page
-      else
+      else # admin creating a new chef - no change of session or cookies for Action cable
         flash[:success] = "Chef #{@chef.name} added to the MyRecipes App!"
         redirect_to chefs_path #Admin created this chef profile, show all the chefs_path
       end

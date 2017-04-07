@@ -40,12 +40,12 @@
         <%= link_to "View all recipes", recipes_path, class: "btn btn-sm btn-mybtn1" %>
       <% else %>
           <div>
-            <%= link_to "See all this chef's recipes", chef_path(@recipe.chef), class: "btn btn-sm btn-mybtn1"  %>
-            <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-sm btn-mybtn1" %>
+            <%= link_to "See this chef's recipes", chef_path(@recipe.chef), class: "btn btn-sm btn-mybtn1"  %>
+            <%= link_to "View All Recipes", recipes_path, class: "btn btn-sm btn-mybtn1" %>
           </div>
       <% end %>
     <% else %>
-      <%= link_to "Return to recipes listing", recipes_path, class: "btn btn-sm btn-mybtn1" %>
+      <%= link_to "View All Recipes", recipes_path, class: "btn btn-sm btn-mybtn1" %>
     <% end %>
   </div>
 </section>
@@ -59,7 +59,7 @@
     <div class="col-md-8 col-md-offset-2">
       <!-- This form uses a [nested route] which is defined in the routes file and
           the instance variable @comment is defined in the show action of the recipes controller -->
-      <%= form_for([@recipe, @comment], :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <%= form_for([@recipe, @comment], remote: :true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
         <div class="form-group">
           <div class="control-label col-md-2">
             <%= f.label :description, "Comment" %>
@@ -82,7 +82,7 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
           <h4><small>Comments:</small></h4>
-          <div id = "messages">
+          <div id = "messages"> <!-- We'll use this to set up a javascript event listener -->
             <%= render partial: 'comments/comments', object: @comments %> <!-- this @comments variable is created in the recipes controller -->
           </div>
       </div>

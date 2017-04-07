@@ -1,19 +1,21 @@
 Rails.application.routes.draw do
-  get 'chefs/index'
-
-  get 'chefs/show'
-
-  get 'chefs/new'
-
-  get 'chefs/edit'
-
-  get 'chefs/delete'
+  # get 'chefs/index'
+  #
+  # get 'chefs/show'
+  #
+  # get 'chefs/new'
+  #
+  # get 'chefs/edit'
+  #
+  # get 'chefs/delete'
 
   get '/signup', to: 'chefs#new'
 
   get '/login', to:'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  mount ActionCable.server => '/cable'
 
   resources :chefs, except: [:new] #we want the new route to go to /signup
   #   member do
@@ -28,6 +30,12 @@ Rails.application.routes.draw do
   end
 
   resources :ingredients do
+    member do
+      get :delete
+    end
+  end
+
+  resources :comments do
     member do
       get :delete
     end

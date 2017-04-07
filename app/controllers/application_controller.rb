@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  # any methods we build here will be availabel to all controllers
+  # any methods we build here will be available to all controllers
 
   helper_method :current_chef, :logged_in? # specifying that this is a helper_method, thes will be available to views as well
 
