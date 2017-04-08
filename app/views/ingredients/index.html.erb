@@ -16,8 +16,11 @@
     <tr>
       <td><%= link_to ing.name.capitalize, ingredient_path(ing) %></td>
       <td><%= pluralize(ing.recipes.count, "recipe") if ing.recipes %></td>
-      <% if logged_in? && current_chef.admin? %>
-        <td><%= link_to "Edit this Ingredient", edit_ingredient_path(ing) %></td>
+      <% if logged_in? && current_chef.admin? %> <!-- Only chefs who are admins are allowed to edit/delete ingredients -->
+        <td><%= link_to "Edit ", edit_ingredient_path(ing) %></td>
+        <% if ing.recipes.count == 0 %>
+          <td><%= link_to "Delete ", ingredient_path(ing), method: :delete, data: { confirm: "Are you sure you want to delete this ingredient?"}, class: "myLink" %></td>
+        <% end %>
       <% end %>
     </tr>
   <% end %>
