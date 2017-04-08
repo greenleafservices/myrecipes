@@ -1,6 +1,8 @@
 <!-- Shows individual recipe details -->
 <%= render 'shared/page_title', title: @recipe.name %>
-
+<% session[:recipe_comment_id] = nil %> <!-- Reset the recipe_comment_id in the SESSION for each recipe view -->
+                                        <!-- This SESSION variable is during the editing of comments from the _comments partial and -->
+                                        <!-- provides a path back to the recipe containing the comment -->
 <div class="well-half col-md-6 mycol-md-offset-1">
   <h4 class="center description"><strong>Ingredients: </strong></h4>
   <%= simple_format(@recipe.description) %>
@@ -79,6 +81,7 @@
   </div>
 <% end %>
 <% if @recipe.comments.any? %>
+
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
           <h4><small>Comments:</small></h4>

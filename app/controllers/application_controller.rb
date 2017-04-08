@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   # any methods we build here will be available to all controllers
+  #session[:recipe_comment_id] = nil
 
   helper_method :current_chef, :logged_in? # specifying that this is a helper_method, thes will be available to views as well
 

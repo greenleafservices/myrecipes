@@ -5,6 +5,8 @@ def new
 end
 
 def create
+  session[:recipe_comment_id] = nil # used to pass recipe_id from _comments partial to the comments controller so that
+  #                                  the comment edit Action can find its way back to the _recipe partial
   chef = Chef.find_by(email: params[:session][:email].downcase)
   if chef && chef.authenticate(params[:session][:password])
     session[:chef_id] = chef.id
