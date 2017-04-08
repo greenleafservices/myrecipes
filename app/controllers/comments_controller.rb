@@ -23,9 +23,11 @@ class CommentsController < ApplicationController
 
     @comment = Comment.find(params[:id]) #get the Comment data
     if @comment.update(comment_params)
-      flash[:success] = "Comment was updated successfully!"
+      flash[:success] = "Comment updated!"
       redirect_to recipe_path(session[:recipe_comment_id]) #passed from _comments.html.erb on _recipe partial
     else
+      flash[:danger] = "Comment was not updated"
+      #redirect_to :back
       render 'edit'
     end
   end
@@ -34,8 +36,13 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id]) #get the recipe data
   end
 
-  def destroy
+  def delete
+  end
 
+  def destroy
+    Comment.find(params[:id]).destroy #get the comment data, set the action
+    flash[:success] = "Comment was deleted successfully!"
+    redirect_to recipe_path(session[:recipe_comment_id]) #passed from _comments.html.erb on _recipe partial
   end
 
   private
