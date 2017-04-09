@@ -1,19 +1,15 @@
 Rails.application.routes.draw do
-  # get 'chefs/index'
-  #
-  # get 'chefs/show'
-  #
-  # get 'chefs/new'
-  #
-  # get 'chefs/edit'
-  #
-  # get 'chefs/delete'
+  root "pages#home"
+  get 'pages/home', to: 'pages#home'
 
   get '/signup', to: 'chefs#new'
-
   get '/login', to:'sessions#new'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+
+  get 'chat', to: 'chatrooms#show' #chatrooms controller, show action
+
+
 
   mount ActionCable.server => '/cable'
 
@@ -41,7 +37,7 @@ Rails.application.routes.draw do
     end
   end
 
-  root "pages#home"
-	get 'pages/home', to: 'pages#home'
+  resources :messages, only: [:create]
+
 
 end

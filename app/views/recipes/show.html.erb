@@ -61,7 +61,7 @@
     <div class="col-md-8 col-md-offset-2">
       <!-- This form uses a [nested route] which is defined in the routes file and
           the instance variable @comment is defined in the show action of the recipes controller -->
-      <%= form_for([@recipe, @comment], remote: :true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+      <%= form_for([@recipe, @comment], remote: true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
         <div class="form-group">
           <div class="control-label col-md-2">
             <%= f.label :description, "Comment" %>
