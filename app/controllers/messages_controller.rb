@@ -6,7 +6,9 @@ class MessagesController < ApplicationController
     @message = Message.new(message_params)
       @message.chef = current_chef
       if @message.save
-        redirect_to chat_path
+        #redirect_to chat_path
+        ActionCable.server.broadcast "chatroom_channel", render(partial: 'messages/message', object: @message)
+        #render(partial: 'message', locals: { message: message})
         #ActionCable.server.broadcast "chatroom_channel", message: render_message(@message), chef: @message.chef.name
       else
         render 'chatrooms/show'

@@ -69,11 +69,11 @@
           <div class="col-md-8">
             <%= f.text_area :description, rows: 2, class: "form-control", placeholder: "Enter Comment Here" %>
           </div>
-          <!-- <div class="form-group">
-            <div class="col-md-offset-2 col-md-10"> -->
+          <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
               <!-- This will call the create action in the Comments controller -->
               <%= f.submit "Submit Comment", class: "btn btn-primary btn-sm btn-mybtn1" %>
-            <!-- </div> -->
+          </div
         </div>
       </div>
       <% end %>
@@ -85,7 +85,7 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
           <h4><small>Comments:</small></h4>
-          <div id = "messages"> <!-- We'll use this to set up a javascript event listener -->
+          <div id = "comment_messages"> <!-- We'll use this to set up a javascript event listener in comments.coffee -->
             <%= render partial: 'comments/comments', object: @comments %> <!-- this @comments variable is created in the recipes controller -->
           </div>
       </div>

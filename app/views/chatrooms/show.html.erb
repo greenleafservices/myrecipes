@@ -11,6 +11,8 @@
       <%= form_for(@message, remote: true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
         <%= f.text_area :content, class: "form-control", placeholder: "Enter a message!" %>
         <%= f.submit "Send", class: 'btn btn-primary' %>
+        <!-- There is a section in lecture 165 at about 7:38 about adding some javascript to send the message when the user
+        presses Enter on the keyboard - I chose not to use that functionality -->
       <% end %>
     </div>
   </div>

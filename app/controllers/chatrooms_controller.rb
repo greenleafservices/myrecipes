@@ -1,4 +1,5 @@
 class ChatroomsController < ApplicationController
+  before_action :require_user #from ApplicationController
 
   def show
     @message = Message.new

@@ -6,8 +6,11 @@ App.chatroom = App.cable.subscriptions.create "ChatroomChannel",
     # Called when the subscription has been terminated by the server
 
   received: (data) ->
-    $('#messages').append('message')
-    $('#message_content').val '' # from message partial - div class message-span content
+    $('#messages').prepend(data)
+    #$('#messages').append('message')
+    #$('#messages').append data['message']
+    $('#message_content').val '' # clear the last message on the form
+    #message-span content
     #scrollToBottom()
     return
     # Called when there's incoming data on the websocket for this channel
