@@ -1,10 +1,14 @@
+<!-- This is the live recipe comment section. Unfortunatley, it is not "recipe specific" in that it will be activated for any recipe comment that
+is broadcast by any user, no matter what recipe other users amy be actually viewing -->
+
 <div class="row">
   <div class="col-md-2">
-    <section class="chef_info center">
-      <%= gravatar_for(comment.chef, size: 60) %>
-    </section>
+    
   </div>
   <div id = "comment_messages" class="col-md-8 well">
+    <%= gravatar_for(comment.chef, size: 40) %>
+    <!-- I added the first line below to allow the program to specify what recipe the comment is about -->
+    <p><%= comment.chef.name %> just made a comment about a recipe for <%= link_to comment.recipe.name, recipe_path(comment.recipe_id) %></p>
     <p><%= comment.description %></p>
     <p>
       <span class="quiet"><small>Created:<%= time_ago_in_words(comment.created_at) %> ago by <%= comment.chef.name %></small></span>

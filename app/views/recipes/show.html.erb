@@ -64,7 +64,7 @@
       <%= form_for([@recipe, @comment], remote: true, :html => {class: "form-horizontal", role: "form"}) do |f| %>
         <div class="form-group">
           <div class="control-label col-md-2">
-            <%= f.label :description, "Comment" %>
+            <%= f.label :description, "New Comment" %>
           </div>
           <div class="col-md-8">
             <%= f.text_area :description, rows: 2, class: "form-control", placeholder: "Enter Comment Here" %>
@@ -80,16 +80,17 @@
     </div>
   </div>
 <% end %>
-<% if @recipe.comments.any? %>
 
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-          <h4><small>Comments:</small></h4>
-          <div id = "comment_messages"> <!-- We'll use this to set up a javascript event listener in comments.coffee -->
-            <%= render partial: 'comments/comments', object: @comments %> <!-- this @comments variable is created in the recipes controller -->
-          </div>
-      </div>
+
+<% if @recipe.comments.any? %>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+        <h4>Previous Comments:</h4>
+        <div id = "comment_messages"> <!-- We'll use this to set up a javascript event listener in comments.coffee -->
+          <%= render partial: 'comments/comments', object: @comments %> <!-- this @comments variable is created in the recipes controller -->
+        </div>
     </div>
+  </div>
 <% else %>
   <div class="row">
     <div class="col-md-8 col-md-offset-2">
