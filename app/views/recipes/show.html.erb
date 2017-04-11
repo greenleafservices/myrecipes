@@ -3,6 +3,11 @@
 <% session[:recipe_comment_id] = nil %> <!-- Reset the recipe_comment_id in the SESSION for each recipe view -->
                                         <!-- This SESSION variable is during the editing of comments from the _comments partial and -->
                                         <!-- provides a path back to the recipe containing the comment -->
+<div align="center">
+  <h4>Chef - <%= @chef.name %></h4>
+
+</div>
+
 <div class="well-half col-md-6 mycol-md-offset-1">
   <h4 class="center description"><strong>Ingredients: </strong></h4>
   <%= simple_format(@recipe.description) %>
@@ -52,8 +57,6 @@
   </div>
 </section>
 
-
-
 </br>
 <!-- Add the ability to add comment on this recipe -->
 <% if logged_in? %>
@@ -86,7 +89,7 @@
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
         <h4>Previous Comments:</h4>
-        <div id = "comment_messages"> <!-- We'll use this to set up a javascript event listener in comments.coffee -->
+        <div id = "comment_messages"> <!-- We'll use this id to set up a javascript event listener in comments.coffee -->
           <%= render partial: 'comments/comments', object: @comments %> <!-- this @comments variable is created in the recipes controller -->
         </div>
     </div>

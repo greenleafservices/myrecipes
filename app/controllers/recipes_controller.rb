@@ -10,9 +10,11 @@ class RecipesController < ApplicationController
   end
 
   def show
+    #byebug
     @recipe = Recipe.find(params[:id]) #get the recipe data
     @comments = @recipe.comments.paginate(page: params[:page], per_page: 5)
     @comment = Comment.new # for the comment entry process
+    @chef = @recipe.chef # find the chef that is linked to the recipe by its modeled association (belongs_to chef)
   end
 
   def new
